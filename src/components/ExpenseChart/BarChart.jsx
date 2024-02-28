@@ -37,14 +37,31 @@ const BarChart = ({ barChartData = [] }) => {
   const options = {
     maintainAspectRatio: false,
     scales: {
+      x: {
+        border: {
+          display: false,
+        },
+        grid: {
+          drawOnChartArea: false,
+          drawTicks: false,
+        },
+      },
       y: {
         beginAtZero: true,
+        ticks: {
+          display: false,
+        },
+        grid: {
+          display: false,
+          drawOnChartArea: false,
+          drawTicks: false,
+        },
       },
     },
     plugins: [barBox],
     onHover: (e, chartElement) => {
       if (chartElement.length === 1) {
-        console.log(e.native.target);
+        console.log(e);
         e.native.target.style.cursor = "pointer";
       } else {
         e.native.target.style.cursor = "default";
@@ -56,7 +73,7 @@ const BarChart = ({ barChartData = [] }) => {
       data={data}
       options={options}
       plugins={[barBox]}
-      className="bg-white"
+      className="bg-white rounded-3xl"
     />
   );
 };

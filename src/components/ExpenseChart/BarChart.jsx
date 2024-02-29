@@ -12,6 +12,7 @@ const BarChart = ({ barChartData = [] }) => {
         data: chartData,
         backgroundColor: "#EC755D",
         borderRadius: 5,
+        borderSkipped: false,
       },
     ],
   };
@@ -71,24 +72,27 @@ const BarChart = ({ barChartData = [] }) => {
     },
   };
   return (
-    <div className="relative h-[50vw] md:h-[10vw] rounded-t-3xl bg-[#FFFCF7]">
-      <h1 className="px-7 py-7 text-4xl font-bold text-[#422D1F]">
+    <div className="rounded-md md:rounded-3xl  bg-[#FFFCF7] px-3 md:p-7">
+      <h1 className="py-3  text-xl md:pb-5 md:text-4xl font-bold text-[#422D1F]">
         Spending - Last 7 days
       </h1>
-      <Bar data={data} options={options} className="bg-[#FFFCF7] px-6" />
-      <div className="text-3xl bg-[#FFFCF7] px-6 rounded-b-3xl">
-        <div className="divider m-0 pt-5 "></div>
-        <div className="flex items-center justify-between py-10">
+      {/* bar chart */}
+      <div className="relative h-[25vh] w-[80vw]  md:h-[21vh] md:w-[25vw]  ">
+        <Bar data={data} options={options} className="bg-[#FFFCF7] px-6" />
+      </div>
+      <div className="text-3xl bg-[#FFFCF7] rounded-md md:rounded-b-3xl py-5">
+        <div className="divider m-0 py-5 md:py-8 "></div>
+        <div className="flex items-center justify-between ">
           {/* total  spending*/}
           <div>
-            <h3 className="text-lg font-normal text-[#8E8882]">
+            <h3 className="text-lg font-normal text-[#8E8882] mb-3 md:mb-0">
               Total this month
             </h3>
-            <p className="text-5xl font-bold">$478.33</p>
+            <p className="text-3xl md:text-5xl font-bold">$478.33</p>
           </div>
           {/* percentage */}
           <div className="text-end">
-            <h3 className="text-lg font-bold">+2.4%</h3>
+            <h3 className="text-lg font-bold ">+2.4%</h3>
             <p className="text-[#8E8882] text-lg font-normal">
               from last month
             </p>

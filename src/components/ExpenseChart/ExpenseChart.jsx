@@ -15,16 +15,15 @@ const ExpenseChart = () => {
   useEffect(() => {
     getBarChartData();
   }, []);
-  console.log(barChartData);
 
   return (
-    <div className="w-[100vw] min-h-[100vh] flex justify-center  bg-[#F7E9DC]">
-      <div className="w-[34rem]">
+    <div className="w-full h-[100vh] bg-[#F7E9DC] grid place-items-center">
+      <div className="w-[20rem] sm:w-[50rem]  md:w-[34rem]">
         {/* todo: heading */}
-        <div className="flex justify-between py-[1.7rem]  px-[1.9rem] rounded-2xl bg-[#EC755D] mb-3 ">
+        <div className="flex justify-between py-[1rem] px-[1.2rem] md:py-[1.7rem]  md:px-[1.9rem] rounded-md md:rounded-2xl bg-[#EC755D] mb-3 ">
           <div className="text-white">
-            <h1 className=" text-lg">My Balance</h1>
-            <p className="font-bold text-3xl m-0">$921.48</p>
+            <h1 className="text-normal  md:text-lg">My Balance</h1>
+            <p className="font-bold text-xl md:text-3xl m-0">$921.48</p>
           </div>
           <img src={logo} alt={logo} />
         </div>

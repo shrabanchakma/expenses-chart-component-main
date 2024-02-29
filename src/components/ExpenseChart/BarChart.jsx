@@ -22,6 +22,21 @@ const BarChart = ({ barChartData = [] }) => {
       legend: {
         display: false,
       },
+      tooltip: {
+        xAlign: "center",
+        yAlign: "center",
+        displayColors: false,
+        backgroundColor: "#3B2214",
+        padding: 6,
+        bodyFont: {
+          size: 18,
+          weight: "bold",
+        },
+        callbacks: {
+          title: () => "",
+          label: (toolTipItem) => "$" + toolTipItem.raw,
+        },
+      },
     },
     scales: {
       x: {
@@ -56,13 +71,13 @@ const BarChart = ({ barChartData = [] }) => {
     },
   };
   return (
-    <div className="relative h-[50vw] md:h-[10vw] border rounded-t-3xl bg-[#FFFCF7]">
+    <div className="relative h-[50vw] md:h-[10vw] rounded-t-3xl bg-[#FFFCF7]">
       <h1 className="px-7 py-7 text-4xl font-bold text-[#422D1F]">
         Spending - Last 7 days
       </h1>
       <Bar data={data} options={options} className="bg-[#FFFCF7] px-6" />
-      <div className="text-3xl bg-[#FFFCF7] px-6">
-        <div className="divider m-0 pt-5 divider-neutral"></div>
+      <div className="text-3xl bg-[#FFFCF7] px-6 rounded-b-3xl">
+        <div className="divider m-0 pt-5 "></div>
         <div className="flex items-center justify-between py-10">
           {/* total  spending*/}
           <div>

@@ -1,10 +1,14 @@
 import { Bar } from "react-chartjs-2";
-import { Chart, registerables } from "chart.js";
-Chart.register(...registerables);
+import { Chart, registerables, Tooltip } from "chart.js";
+import { useRef } from "react";
+Chart.register(...registerables, Tooltip);
 
 const BarChart = ({ barChartData = [] }) => {
+  const chartRef = useRef(null);
   const labels = barChartData.map((dataItem) => dataItem.day);
   const chartData = barChartData.map((dataItem) => dataItem.amount);
+  console.log(Tooltip.positioners);
+
   const data = {
     labels,
     datasets: [
@@ -13,6 +17,7 @@ const BarChart = ({ barChartData = [] }) => {
         backgroundColor: "#EC755D",
         borderRadius: 5,
         borderSkipped: false,
+        hoverBackgroundColor: "#76B5BC",
       },
     ],
   };
@@ -37,6 +42,7 @@ const BarChart = ({ barChartData = [] }) => {
           title: () => "",
           label: (toolTipItem) => "$" + toolTipItem.raw,
         },
+        position: "average",
       },
     },
     scales: {
@@ -78,7 +84,12 @@ const BarChart = ({ barChartData = [] }) => {
       </h1>
       {/* bar chart */}
       <div className="relative h-[25vh] w-[80vw]  md:h-[21vh] md:w-[25vw]  ">
-        <Bar data={data} options={options} className="bg-[#FFFCF7] px-6" />
+        <Bar
+          data={data}
+          options={options}
+          ref={chartRef}
+          className="bg-[#FFFCF7] px-6"
+        />
       </div>
       <div className="text-3xl bg-[#FFFCF7] rounded-md md:rounded-b-3xl py-5">
         <div className="divider m-0 py-5 md:py-8 "></div>

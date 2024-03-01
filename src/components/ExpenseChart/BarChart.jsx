@@ -7,7 +7,6 @@ const BarChart = ({ barChartData = [] }) => {
   const chartRef = useRef(null);
   const labels = barChartData.map((dataItem) => dataItem.day);
   const chartData = barChartData.map((dataItem) => dataItem.amount);
-  console.log(Tooltip.positioners);
 
   const data = {
     labels,

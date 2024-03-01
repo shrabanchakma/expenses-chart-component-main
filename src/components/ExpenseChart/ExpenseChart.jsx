@@ -3,18 +3,36 @@ import logo from "../../assets/logo.svg";
 import BarChart from "./BarChart";
 const ExpenseChart = () => {
   const [barChartData, setBarChartData] = useState([]);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [loading, setLoading] = useState(true);
   async function getBarChartData() {
     try {
       const res = await fetch("data.json");
       const data = await res.json();
       setBarChartData(data);
+      setLoading(false);
     } catch (error) {
-      console.error(error);
+      setErrorMsg(error.message);
+      setLoading(false);
     }
   }
   useEffect(() => {
     getBarChartData();
   }, []);
+
+  if (loading)
+    return (
+      <div className="h-[100vh] flex items-center justify-center">
+        <span className="loading loading-dots loading-lg text-[#EC755D]"></span>
+      </div>
+    );
+
+  if (errorMsg)
+    return (
+      <div className="h-[100vh] flex items-center justify-center">
+        <span className="text-medium text-xl text-rose-700">{errorMsg}</span>
+      </div>
+    );
 
   return (
     <div className="w-full h-[100vh] bg-[#F7E9DC] grid place-items-center">
